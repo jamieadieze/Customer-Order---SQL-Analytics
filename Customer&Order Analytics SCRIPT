@@ -64,15 +64,19 @@ FROM BIT_DB.customers
 LEFT JOIN BIT_DB.FebSales
 ON BIT_DB.customers.order_id = BIT_DB.FebSales.orderID
 WHERE BIT_DB.FebSales.Quantity>2 
-AND length(orderid) = 6 
-AND orderid <> 'Order ID';
+AND length(BIT_DB.FebSales.orderid) = 6 
+AND BIT_DB.FebSales.orderid <> 'Order ID';
 
 
-SELECT count(distinct acctnum), 
-avg(quantity*price) 
+SELECT count(distinct BIT_DB.customers.acctnum), avg(BIT_DB.FebSales.Quantity*BIT_DB.FebSales.price)
 FROM BIT_DB.customers
 LEFT JOIN BIT_DB.FebSales
 ON BIT_DB.customers.order_id = BIT_DB.FebSales.orderID
-WHERE BIT_DB.FebSales.Quantity>2 
-AND length(orderid) = 6 
-AND orderid <> 'Order ID';
+WHERE BIT_DB.FebSales.Quantity > 2
+AND length(BIT_DB.FebSales.orderID) = 6
+AND BIT_DB.FebSales.orderID <> 'ORDER ID';
+
+
+
+
+
